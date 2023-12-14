@@ -74,7 +74,9 @@ questions = [
     # "When the Monument to the Martyrs of the 1830 Revolution was created?",
     # "What is the Abhayagiri Vihāra?",
     # "How big is Wikipédia en français?",
-    "what is Cellular automaton? who created it and for what reason? List a real lifr use case for it."
+    "what is Cellular automaton?",
+    "who created it and for what reason?",
+    "List a real lifr use case for it.",
 ]
 chat_history = []
 
