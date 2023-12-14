@@ -49,8 +49,6 @@ Answer:
 
 retriever = WikipediaRetriever()
 
-query = "your query here"
-docs = retriever.get_relevant_documents(query=query)
 
 prompt = PromptTemplate(
 input_variables=[
@@ -65,21 +63,18 @@ memory = ConversationBufferMemory(
     )
 
 
-# qa_chain = ConversationalRetrievalChain(
-# retriever=retriever,
-# llm=dpo_llm
-# )
-
 qa = ConversationalRetrievalChain.from_llm(
     dpo_llm, 
     retriever=retriever,
+    memory=memory,
 )
 
 questions = [
-    "What is Apify?",
-    "When the Monument to the Martyrs of the 1830 Revolution was created?",
-    "What is the Abhayagiri Vihāra?",
+    # "What is Apify?",
+    # "When the Monument to the Martyrs of the 1830 Revolution was created?",
+    # "What is the Abhayagiri Vihāra?",
     # "How big is Wikipédia en français?",
+    "what is Cellular automaton? who created it and for what reason? List a real lifr use case for it."
 ]
 chat_history = []
 
@@ -90,16 +85,11 @@ for question in questions:
     print(f"**Answer**: {result['answer']} \n")
 
 
-question = "What is the capital of France?"
-result = qa_chain({"question": question})
-answer = result["answer"]
-print(answer)
-
 # qa = RetrievalQAWithSourcesChain.from_chain_type(
-#     llm=llm, 
-#     retriever=retriever, 
-#     return_source_documents=True, 
-#     verbose=True, 
+#     llm=llm,
+#     retriever=retriever,
+#     return_source_documents=True,
+#     verbose=True,
 #     chain_type_kwargs={
 #         "verbose": True,
 #         "memory": memory,
@@ -107,4 +97,5 @@ print(answer)
 #         "document_variable_name": "context"
 #         }
 #     )
-x=0
+# https://python.langchain.com/docs/integrations/providers/vectara/vectara_chat#conversationalretrievalchain-with-question-answering-with-sources
+x = 0
